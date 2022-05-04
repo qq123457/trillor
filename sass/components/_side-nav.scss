@@ -1,0 +1,95 @@
+.side-nav {
+  font-size: 1.4rem;
+  list-style: none;
+  margin-top: 3.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    display: flex;
+    margin: 0;
+  }
+
+  &__item {
+    position: relative;
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+
+      @media only screen and (max-width: $bp-medium) {
+        // flex: 1;
+        margin: 0;
+      }
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      flex: 1;
+      // margin: 0;
+    }
+  }
+
+  &__item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--color-primary);
+    width: 3px;
+    transition: transform 0.2s,
+      width 0.4s cubic-bezier(0.78, -0.05, 0.05, 0.98) 0.2s,
+      background-color 0.1s;
+
+    transform: scaleY(0);
+    // transform-origin: bottom;
+  }
+
+  &__item:hover::before,
+  &__item--active::before {
+    transform: scaleY(1);
+    width: 100%;
+  }
+
+  &__item:active::before {
+    background-color: var(--color-primary-light);
+  }
+
+  &__link:link,
+  &__link:visited {
+    color: var(--color-grey-light-1);
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    padding: 1.5rem;
+    position: relative;
+
+    z-index: 1;
+    display: flex;
+    align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+      justify-content: center;
+      // margin: 0;
+    }
+
+    @media only screen and (max-width: $bp-smallest) {
+      // display: inline-block;
+      // flex: 0;
+      // margin: 0;
+      flex-direction: column;
+      padding: 1.5rem 0.5rem;
+    }
+  }
+
+  &__icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-right: 2rem;
+    // 适用当前元素或父元素的颜色
+    fill: currentColor;
+
+    @media only screen and (max-width: $bp-smallest) {
+      margin: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+}

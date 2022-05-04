@@ -1,0 +1,35 @@
+/*
+  - phone
+  - tab-port
+  - tab-land
+*/
+// 1em = 16px, 使用这个时为了放在用户修改字体大小导致布局发生变化
+// 媒体查询只使用 于屏幕，如果要打印该页面则不适合。
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      // 600px
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      // 90px
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      // 1200px
+      @content;
+    }
+  }
+
+  @if $breakpoint == big-desktop {
+    @media (min-width: 112.5em) {
+      @content;
+    }
+  }
+}

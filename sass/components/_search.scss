@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  position: relative;
   @media only screen and (max-width: $bp-smallest) {
     order: 1;
     flex: 0 0 100%;
@@ -60,5 +60,30 @@
     height: 2.25rem;
     width: 2.25rem;
     fill: var(--color-grey-dark-3);
+  }
+
+  &__association-box {
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    width: 90%;
+    margin: 0 2rem;
+    height: 0;
+    opacity: 0;
+    transition: all 0.5s;
+    z-index: 200;
+  }
+
+  &__input:focus ~ &__association-box {
+    height: 20rem;
+    opacity: 1;
+  }
+
+  &__association {
+    list-style: none;
+    padding: 2rem;
+  }
+
+  &__search-association-item {
   }
 }
